@@ -1,0 +1,17 @@
+spring:
+  application:
+    name:ndcc-service-login
+  datasource:
+    url:jdbc:mysql://localhost:3306/ndcc
+    username:root
+    password:welcome
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    com.ndcc.ndccservicelogin: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: ./ndcc-service-login.log
+
