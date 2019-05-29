@@ -15,13 +15,10 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(entityManagerFactoryRef = "entityManagerFactory",
         basePackages = {"com.ndcc.ndccservicelogin.repository"})
 public class DatabaseConfig {
-    @Bean(name="mysqlds")
-    @ConfigurationProperties(prefix="ndcc.mysql.ds")
+    @Bean(name = "mysqlds")
+    @ConfigurationProperties(prefix = "ndcc.mysql.ds")
     @Primary
-    public DataSource createMySqlDatasource(){
+    public DataSource createMySqlDatasource() {
         return DataSourceBuilder.create().build();
     }
-
-
-
 }

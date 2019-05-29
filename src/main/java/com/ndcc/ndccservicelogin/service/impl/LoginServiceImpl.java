@@ -1,7 +1,8 @@
 package com.ndcc.ndccservicelogin.service.impl;
 
 
-import com.ndcc.ndccservicelogin.model.UserLogin;
+import com.ndcc.ndccservicelogin.entity.UserLogin;
+import com.ndcc.ndccservicelogin.model.User;
 import com.ndcc.ndccservicelogin.repository.LoginRepo;
 import com.ndcc.ndccservicelogin.resource.Login;
 import com.ndcc.ndccservicelogin.service.LoginService;
@@ -18,26 +19,23 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     LoginRepo loginRepo;
 
-
     /**
-     *
      * @param user
      * @return
      */
     @Override
-    public boolean isUserExists(UserLogin user) {
+    public boolean isUserExists(User user) {
 
         log.debug("Verify if user exists");
 
-        UserLogin userLogin= loginRepo.findByUserIdAndPasswordAndEmail(user.getUserId(),user.getPassword(),user.getEmail());
+        UserLogin userLogin = loginRepo.findByUserIdAndPasswordAndEmail(user.getUserId(), user.getPassword(), user.getEmail());
 
-        log.debug("User details retrieved from DB - user id :{}, email:{}",userLogin.getUserId(),userLogin.getEmail());
-
-        if(userLogin!=null){
-            log.info("User :{} login successful ",userLogin.getUserId());
+        if (userLogin != null) {
+            log.info("User :{} login successful ", userLogin.getUserId());
+            log.debug("User details retrieved from DB - user id :{}, email:{}", userLogin.getUserId(), userLogin.getEmail());
             return true;
         }
-        log.info("User :{} login failed",user.getUserId());
+        log.info("User :{} login failed", user.getUserId());
         return false;
     }
 }
